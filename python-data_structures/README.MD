@@ -1,4 +1,4 @@
-python-data_structures can start 
+python-data_structures can start
 0. Print a list of integers
 1. Secure access to an element in a list
 2. Replace element
@@ -10,5 +10,6 @@ python-data_structures can start
 8. More returns!
 9. Find the max
 10. Only by 2
-11. Delete at
+11. Deletet
 12. Switch
+ here you go !!!
