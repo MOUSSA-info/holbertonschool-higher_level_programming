@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def add_tuple(tuple_a=(), tuple_b=()):
     # Get first and second elements, or 0 if not present
     a1 = tuple_a[0] if len(tuple_a) > 0 else 0
