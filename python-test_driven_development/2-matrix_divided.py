@@ -20,12 +20,15 @@ def matrix_divided(matrix, div):
     if not (isinstance(matrix, list) and
             all(isinstance(row, list) for row in matrix)):
         raise TypeError(
-            "matrix must be a matrix (list of lists) of integers/floats")
+            "matrix must be a matrix (list of lists) of integers/floats"
+        )
+
     for row in matrix:
         for elem in row:
             if not isinstance(elem, (int, float)) or isinstance(elem, bool):
                 raise TypeError(
-                    "matrix must be a matrix (list of lists) of integers/floats")
+                    "matrix must be a matrix (list of lists) of integers/floats"
+                )
 
     # Check row size consistency
     if matrix:
