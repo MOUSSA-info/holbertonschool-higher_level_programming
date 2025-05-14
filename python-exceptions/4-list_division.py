@@ -5,6 +5,7 @@ def list_division(my_list_1, my_list_2, list_length):
         try:
             num1 = my_list_1[i]
             num2 = my_list_2[i]
+            # Vérification des types (exclure bool)
             if (not isinstance(num1, (int, float)) or isinstance(num1, bool) or
                 not isinstance(num2, (int, float)) or isinstance(num2, bool)):
                 print("wrong type")
@@ -18,4 +19,6 @@ def list_division(my_list_1, my_list_2, list_length):
         except IndexError:
             print("out of range")
             result.append(0)
+        finally:
+            pass
     return result
