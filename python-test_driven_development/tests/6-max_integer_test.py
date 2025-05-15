@@ -13,3 +13,10 @@ class TestMaxInteger(unittest.TestCase):
 
     # ... autres méthodes de test ...
 
+class TestMaxInteger(unittest.TestCase):
+    def test_ordered_list(self):
+        self.assertEqual(max_integer([1, 2, 3, 4]), 4)
+
+    def test_max_at_beginning(self):
+        self.assertEqual(max_integer([4, 3, 2, 1]), 4)
+
