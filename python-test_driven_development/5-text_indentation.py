@@ -49,4 +49,3 @@ def text_indentation(text):
         segment = ''.join(current_segment).strip()
         if segment:
             print(segment, end='')
-
