@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines a Rectangle class with instance counting."""
+"""Defines a Rectangle class."""
 
 class Rectangle:
     number_of_instances = 0
@@ -50,5 +50,5 @@ class Rectangle:
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
-        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
