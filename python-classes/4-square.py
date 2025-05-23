@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-This module defines the Square class, which represents a square,
-allows controlled access and update of its size, and provides a method to compute its area.
+This module defines the Square class, which represents a square
+with a private size attribute, and provides controlled access and update
+through property getter and setter.
 """
 
 
