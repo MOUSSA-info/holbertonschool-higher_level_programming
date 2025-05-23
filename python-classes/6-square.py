@@ -20,10 +20,6 @@ class Square:
             size (int): The size of one side of the square (default is 0).
             position (tuple): The position (horizontal and vertical offset)
                               (default is (0, 0)).
-
-        Raises:
-            TypeError: If size is not an integer or position is not a tuple of 2 positive integers.
-            ValueError: If size is less than 0.
         """
         self.size = size
         self.position = position
@@ -77,14 +73,11 @@ class Square:
         Raises:
             TypeError: If value is not a tuple of 2 positive integers.
         """
-        if (
-            not isinstance(value, tuple) or
-            len(value) != 2 or
-            not isinstance(value[0], int) or
-            not isinstance(value[1], int) or
-            value[0] < 0 or
-            value[1] < 0
-        ):
+        if (not isinstance(value, tuple) or
+                len(value) != 2 or
+                not isinstance(value[0], int) or
+                not isinstance(value[1], int) or
+                value[0] < 0 or value[1] < 0):
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
@@ -106,10 +99,9 @@ class Square:
             print()
             return
 
-        # Print vertical offset
+        # Print vertical offset (position[1] lines)
         for _ in range(self.__position[1]):
             print()
-
-        # Print each row of the square with horizontal offset
+        # Print each row of the square with horizontal offset (position[0] spaces)
         for _ in range(self.__size):
             print(" " * self.__position[0] + "#" * self.__size)
