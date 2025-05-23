@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
 This module defines the Square class, which represents a square
-with a given size and validates the size upon instantiation.
+and validates the size provided at instantiation.
 """
 
 
 class Square:
     """
-    The Square class defines a square by its size and ensures
+    The Square class defines a square by its size, ensuring
     the size is a non-negative integer.
     """
 
