@@ -1,5 +1,4 @@
-# task_01_duck_typing.py
-
+#!/usr/bin/env python3
 from abc import ABC, abstractmethod
 import math
 
