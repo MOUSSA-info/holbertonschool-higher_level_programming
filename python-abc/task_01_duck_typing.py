@@ -1,20 +1,25 @@
-# task_01_duck_typing.py
+#!/usr/bin/env python3
+"""Module defining Shape, Circle, Rectangle and shape_info using duck typing."""
 
 from abc import ABC, abstractmethod
 import math
 
 class Shape(ABC):
+    """Abstract base class for geometric shapes."""
+
     @abstractmethod
     def area(self):
-        """Calculer l'aire de la forme."""
+        """Calculate the area of the shape."""
         pass
 
     @abstractmethod
     def perimeter(self):
-        """Calculer le périmètre de la forme."""
+        """Calculate the perimeter of the shape."""
         pass
 
 class Circle(Shape):
+    """Circle shape defined by its radius."""
+
     def __init__(self, radius):
         self.radius = radius
 
@@ -25,6 +30,8 @@ class Circle(Shape):
         return 2 * math.pi * self.radius
 
 class Rectangle(Shape):
+    """Rectangle shape defined by its width and height."""
+
     def __init__(self, width, height):
         self.width = width
         self.height = height
@@ -36,6 +43,9 @@ class Rectangle(Shape):
         return 2 * (self.width + self.height)
 
 def shape_info(shape):
-    """Affiche l'aire et le périmètre de la forme donnée."""
+    """
+    Print the area and perimeter of a shape.
+    Uses duck typing: expects shape to have area() and perimeter() methods.
+    """
     print(f"Area: {shape.area()}")
     print(f"Perimeter: {shape.perimeter()}")
