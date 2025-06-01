@@ -1,20 +1,20 @@
 #!/usr/bin/python3
 """
-This module defines the function lookup.
+0-lookup module
 
-The purpose of this module is to provide a function that returns
-the list of available attributes and methods of an object.
+Defines the function `lookup` which returns
+a list of an object's available attributes and methods.
 """
 
 
 def lookup(obj):
     """
-    Returns the list of available attributes and methods of an object.
+    Return the list of available attributes and methods of an object.
 
     Args:
         obj: The object to inspect.
 
     Returns:
-        list: A list of strings containing the names of the attributes and methods.
+        list: A list of attribute/method names available for the object.
     """
     return dir(obj)
