@@ -1,21 +1,23 @@
 #!/usr/bin/python3
-"""Définit une classe Square héritant de Rectangle."""
+"""Defines a Square class that inherits from Rectangle."""
+
 Rectangle = __import__('9-rectangle').Rectangle
 
+
 class Square(Rectangle):
-    """Représente un carré avec validation via Rectangle."""
+    """Represent a square, inherits from Rectangle."""
 
     def __init__(self, size):
-        """
-        Initialise un nouveau Carré.
+        """Initialize a Square.
 
         Args:
-            size (int): Taille du carré.
+            size (int): The size of the square's sides.
         """
         self.integer_validator("size", size)
         super().__init__(size, size)
         self.__size = size
 
     def __str__(self):
-        """Retourne la représentation en chaîne spécifique au carré."""
-        return f"[Square] {self.__size}/{self.__size}"
+        """Return the string representation of the Square."""
+        # On utilise self.__size car c’est ce qui représente la taille du carré
+        return "[Square] {}/{}".format(self.__size, self.__size)
