@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Fetch the first State object from the database"""
+"""List all State objects from the database"""
 
 import sys
 from sqlalchemy import create_engine
@@ -22,11 +22,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    first_state = session.query(State).order_by(State.id).first()
+    states = session.query(State).order_by(State.id).all()
 
-    if first_state:
-        print(f"{first_state.id}: {first_state.name}")
-    else:
-        print("Nothing")
+    for state in states:
+        print(f"{state.id}: {state.name}")
 
     session.close()

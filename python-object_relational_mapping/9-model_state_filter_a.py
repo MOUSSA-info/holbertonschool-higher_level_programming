@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""List all State objects that contain the letter 'a'"""
+"""Fetch the first State object from the database"""
 
 import sys
 from sqlalchemy import create_engine
@@ -15,19 +15,18 @@ if __name__ == "__main__":
     password = sys.argv[2]
     db_name = sys.argv[3]
 
-    engine = create_engine(
-        'mysql+mysqldb://{}:{}@localhost/{}'.format(username,
-                                                    password, db_name),
-        pool_pre_ping=True
-    )
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
+                           .format(username, password, db_name),
+                           pool_pre_ping=True)
 
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).filter(State.name.like('%a%')) \
-        .order_by(State.id).all()
+    first_state = session.query(State).order_by(State.id).first()
 
-    for state in states:
-        print(f"{state.id}: {state.name}")
+    if first_state:
+        print(f"{first_state.id}: {first_state.name}")
+    else:
+        print("Nothing")
 
     session.close()

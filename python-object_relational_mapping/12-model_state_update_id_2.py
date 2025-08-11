@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' model state update id 2'''
+'''model state insert '''
 from model_state import Base, State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -16,9 +16,10 @@ if __name__ == "__main__":
     # Create a session
     Session = sessionmaker(bind=engine)
     session = Session()
-    # Query the state with id 2
-    state = session.query(State).filter(State.id == 2).first()
-    # Update the state's name
-    if state:
-        state.name = "New Mexico"
-        session.commit()
+    # Create a new state
+    new_state = State(name="Louisiana")
+    # Add the state to the session and commit
+    session.add(new_state)
+    session.commit()
+    # Print the new state's id
+    print(new_state.id)
