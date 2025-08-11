@@ -1,49 +1,34 @@
 #!/usr/bin/python3
 """
-Script pour filtrer les états par nom saisi
-Prend 4 arguments : utilisateur, mot de passe, base de données et nom d'état
-Utilise le module MySQLdb
-Connecte en localhost:3306
-Affiche les résultats correspondants
-Ne s’exécute pas lors d’un import
+Write a script that takes in an argument and
+displays all values in the states table of hbtn_0e_0_usa
+where name matches the argument.
 """
-
-import MySQLdb
 import sys
+import MySQLdb
 
-def filter_states(user, password, db_name, state_name):
-    """
-    Connecte à la base et liste les états correspondant au nom fourni
-    """
-    try:
-        # Connexion à la base MySQL
-        db = MySQLdb.connect(
-            host="localhost",
-            port=3306,
-            user=user,
-            passwd=password,
-            db=db_name
-        )
-        # Création du curseur
-        cursor = db.cursor()
-        # Construction de la requête avec format()
-        query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
-        # Exécution de la requête
-        cursor.execute(query)
-        # Récupération et affichage des résultats
-        states = cursor.fetchall()
-        for state in states:
-            print(state)
-        # Nettoyage
-        cursor.close()
-        db.close()
-    except MySQLdb.Error as e:
-        print("Erreur MySQL :", e)
-        sys.exit(1)
 
-# Point d'entrée principal
+def main():
+    conn = MySQLdb.connect(
+                        host="localhost",
+                        port=3306,
+                        user=sys.argv[1],
+                        passwd=sys.argv[2],
+                        db=sys.argv[3],
+                        charset="utf8"
+                            )
+    cur = conn.cursor()
+    search = sys.argv[4]
+    query = """SELECT * FROM states where name = '{:s}'
+            ORDER by id ASC""".format(search)
+    cur.execute(query)
+    row = cur.fetchall()
+    for r in row:
+        if r[1] == search:
+            print(r)
+    cur.close()
+    conn.close()
+
+
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        print("Usage : ./2-my_filter_states.py <user> <password> <db_name> <state_name>")
-        sys.exit(1)
-    filter_states(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+    main()
